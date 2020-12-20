@@ -61,5 +61,10 @@
       display: flex;
       justify-content: center;
     }
+    &.show{
+      &::before{
+      display: none;
+    }
+    }
   }
 }

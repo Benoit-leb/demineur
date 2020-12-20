@@ -44,7 +44,7 @@ export const gameReducer = (
     case "UPDATE_ITEM":
       return {
         ...state,
-        matrix: action.data
+        matrix: state.matrix.map((el, i) => i === action.data.idx - 1 ? action.data : el)
       };
     case "LOSE_GAME":
       return {
@@ -75,11 +75,6 @@ export const gameReducer = (
         countBomb: 0,
         gameReady: false,
         gameStatus: 0
-      };
-    case "SHOW_RESULT":
-      return {
-        ...state,
-        matrix: action.data
       };
     default:
       return state;

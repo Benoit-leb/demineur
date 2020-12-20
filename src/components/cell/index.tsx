@@ -18,7 +18,7 @@ const Cell: FC<Icell> =({item}) => {
     let element;
     if (item.status > 0) {
       item.visited = true;
-      dispatch({ type: "UPDATE_ITEM", data: [...store.matrix, item] })
+      dispatch({ type: "UPDATE_ITEM", data: item })
       return;
     }
     for (let indexX = item.x - 1; indexX <= item.x + 1; indexX++) {
@@ -28,7 +28,7 @@ const Cell: FC<Icell> =({item}) => {
           if (!element.visited ) {
             element.visited = true;
             checkneighbor(element);
-            dispatch({ type: "UPDATE_ITEM", data: [...store.matrix, element] })
+            dispatch({ type: "UPDATE_ITEM", data: element })
           }
         }
       }
@@ -41,7 +41,7 @@ const Cell: FC<Icell> =({item}) => {
       return;
     }
     item.visited = true;
-    dispatch({ type: "UPDATE_ITEM", data: [...store.matrix, item]})
+    dispatch({ type: "UPDATE_ITEM", data: item})
     // it's a bomb
     if (item.status === -1) {
       dispatch({ type: "LOSE_GAME"})
@@ -65,7 +65,7 @@ const Cell: FC<Icell> =({item}) => {
     } else {
       dispatch({ type: "DECREASE_BOMB"})
     }
-    dispatch({ type: "UPDATE_ITEM", data: [...store.matrix, item]})
+    dispatch({ type: "UPDATE_ITEM", data: item})
     checkWin()
     return false;
   }, [dispatch, store.gameReady, store.matrix, checkWin,]);

@@ -28,9 +28,12 @@ const Board = () => {
     return rows;
   };
 
-  const showResult = () => {
-    store.matrix.map((el) => el.show = !el.show)
-    dispatch({type:"SHOW_RESULT", data: store.matrix});
+  const showResult = async () => {
+    await store.matrix.map((el) => {
+      el.show = !el.show;
+      dispatch({ type: "UPDATE_ITEM", data: el })
+      return;
+    })
   };
 
   if (store.matrix.length){
