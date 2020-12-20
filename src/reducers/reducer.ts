@@ -61,12 +61,12 @@ export const gameReducer = (
     case "INCREASE_BOMB":
       return {
         ...state,
-        countBomb: state.countBomb++
+        countBomb: state.countBomb + 1
       };
     case "DECREASE_BOMB":
       return {
         ...state,
-        countBomb: state.countBomb--
+        countBomb: state.countBomb - 1
       };
     case "INIT_GAME":
       return {
