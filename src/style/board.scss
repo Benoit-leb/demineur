@@ -18,3 +18,9 @@
     border:solid 1px black;
   }
 }
+body{
+  padding:16px;
+  @media(min-width: 768px){
+    padding:50px;
+  }
+}

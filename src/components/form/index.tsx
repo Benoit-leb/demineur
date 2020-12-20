@@ -36,7 +36,7 @@ const Form = () => {
           </label>
           <input onChange={(e) => dispatch({ type: "SET_BOMBS", data: parseInt(e.target.value) })} min={1} max={Math.pow(store.size, 2)} value={store.bombs} type="number" />
         </div>
-        <button type="submit" >{store.gameReady ? "Reset" : "Recommencer"}</button>
+        <button type="submit" >{store.gameReady ? "Reset" : "Commencer"}</button>
       </div>
     </form>
   );
