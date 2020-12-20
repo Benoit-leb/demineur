@@ -1,0 +1,22 @@
+.form{
+  & label{
+    font-size: 20px;
+    color: white;
+  }
+  & input{
+    width: 50px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  & .input-container{
+    margin-bottom:20px;
+  }
+  & button{
+    width:150px;
+    border-radius: 8px;
+    background-color: cadetblue;
+    padding: 10px 20px;
+    margin:30px;
+    border:solid 1px black;
+  }
+}

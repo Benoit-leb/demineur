@@ -1,0 +1,20 @@
+.board{
+  & .win{
+    margin:20px;
+    border:solid 10px green;
+    color: green;
+  }
+  & .lost{
+    margin:20px;
+    border:solid 10px red;
+    color: red;
+  }
+  & button{
+    width:150px;
+    border-radius: 8px;
+    background-color: cadetblue;
+    padding: 10px 20px;
+    margin-bottom:30px;
+    border:solid 1px black;
+  }
+}

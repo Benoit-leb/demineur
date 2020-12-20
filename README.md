@@ -1,1 +1,5 @@
-# demineur
+## Project DEMINEUR
+
+- typescript
+- scss
+
