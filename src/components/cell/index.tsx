@@ -53,15 +53,18 @@ const Cell: FC<Icell> =({item}) => {
   }, [checkneighbor, dispatch, store.gameReady, store.matrix, checkWin]);
 
   const markCell = useCallback((e: SyntheticEvent, item: ImatrixItem) => {
-    // game not start or cell open
-    if (!store.gameReady) {
+    // game not start
+    if (!store.gameReady || (item.visited && !item.mark)) {
       return false ;
     }
     e.preventDefault();
     item.visited = !item.visited;
     item.mark = !item.mark;
-    const count = item.mark ? "INCREASE_BOMB" : "DECREASE_BOMB";    
-    dispatch({ type: count})
+    if (item.mark) {
+      dispatch({ type: "INCREASE_BOMB"})
+    } else {
+      dispatch({ type: "DECREASE_BOMB"})
+    }
     dispatch({ type: "UPDATE_ITEM", data: [...store.matrix, item]})
     checkWin()
     return false;
