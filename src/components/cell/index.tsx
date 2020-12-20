@@ -50,10 +50,10 @@ const Cell: FC<Icell> =({item}) => {
     checkneighbor(item);
     checkWin();
     
-  }, [checkneighbor, dispatch, store.gameReady, store.matrix, checkWin]);
+  }, [checkneighbor, dispatch, store.gameReady, checkWin]);
 
   const markCell = useCallback((e: SyntheticEvent, item: ImatrixItem) => {
-    // game not start
+    // game not start or already open without mark
     if (!store.gameReady || (item.visited && !item.mark)) {
       return false ;
     }

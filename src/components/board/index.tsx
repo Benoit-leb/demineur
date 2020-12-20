@@ -32,7 +32,7 @@ const Board = () => {
     await store.matrix.map((el) => {
       el.show = !el.show;
       dispatch({ type: "UPDATE_ITEM", data: el })
-      return;
+      return null;
     })
   };
 
