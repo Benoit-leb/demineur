@@ -3,7 +3,7 @@ import Cell from "../cell";
 import { Context } from "../../reducers/reducer";
 
 const Board = () => {
-  const { store, dispatch } = useContext(Context);
+  const { store } = useContext(Context);
 
   const setRows = (row: number) => {
     let cellsList: ReactElement[] = [];

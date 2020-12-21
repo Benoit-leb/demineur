@@ -60,15 +60,12 @@ const Cell: FC<Icell> =({item}) => {
     e.preventDefault();
     item.visited = !item.visited;
     item.mark = !item.mark;
-    if (item.mark) {
-      dispatch({ type: "INCREASE_BOMB"})
-    } else {
-      dispatch({ type: "DECREASE_BOMB"})
-    }
+    const count = item.mark ? "INCREASE_BOMB" : "DECREASE_BOMB";
+    dispatch({ type: count})
     dispatch({ type: "UPDATE_ITEM", data: item})
     checkWin()
     return false;
-  }, [dispatch, store.gameReady, store.matrix, checkWin,]);
+  }, [dispatch, store.gameReady, checkWin,]);
 
   return(
     <td
