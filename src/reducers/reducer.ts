@@ -5,7 +5,7 @@ import {IContextProps} from "../models/contextModel";
 
 export const initialState: Igame = {
   size: 15,
-  bombs: 32,
+  bombs: 33,
   gameStatus: 0,
   gameReady:false,
   matrix: [],
@@ -22,8 +22,8 @@ export const gameReducer = (
     case "SET_SIZE":
       return {
         ...state,
-        size: action.data < 50 ? action.data : 50,
-        bombs: Math.floor(Math.pow(action.data, 2) / 7),
+        size: action.data >= 0 && action.data <= 50 ? action.data : state.size,
+        bombs: action.data >= 0 && action.data <= 50 ? Math.ceil(Math.pow(action.data, 2)/7) : state.bombs,
         matrix: [],
         gameReady: false,
         gameStatus: 0
@@ -31,7 +31,7 @@ export const gameReducer = (
     case "SET_BOMBS":
       return {
         ...state,
-        bombs: action.data > 0 && action.data < Math.pow(state.size, 2) ? action.data : state.bombs,
+        bombs: action.data >= 0 && action.data <= Math.pow(state.size, 2) ? action.data : state.bombs,
         matrix: [],
         gameReady: false,
         gameStatus: 0
