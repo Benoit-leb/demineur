@@ -7,6 +7,7 @@ export type Igame = {
   gameReady: boolean,
   matrix: ImatrixItem[],
   countBomb: number,
-  showResult:number
+  showResult:number,
+  show:boolean
 }
 

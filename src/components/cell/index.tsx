@@ -72,7 +72,7 @@ const Cell: FC<Icell> =({item}) => {
 
   return(
     <td
-      className={`cell ${item.visited ? "visited" : ""} ${item.mark ? "mark" : ""} cell-${item.status} ${item.show ? "show" : ""}`}
+      className={`cell ${item.visited ? "visited" : ""} ${item.mark ? "mark" : ""} cell-${item.status}`}
       onContextMenu={(e) => markCell(e, item)}
       onClick={() => openCell(item)}>
       {item.status}

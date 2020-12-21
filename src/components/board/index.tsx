@@ -28,19 +28,11 @@ const Board = () => {
     return rows;
   };
 
-  const showResult = async () => {
-    await store.matrix.map((el) => {
-      el.show = !el.show;
-      dispatch({ type: "UPDATE_ITEM", data: el })
-      return null;
-    })
-  };
-
   if (store.matrix.length){
     let classResult = store.gameStatus < 0 ? "lost" : "";
     classResult = store.gameStatus > 0 ? "win" : classResult;
     return (
-      <div className={`board ${store.showResult ? "show" : ""}`}>
+      <div className={`board ${store.show ? "show" : ""}`}>
         <div>Nombre de bombe(s) restante(s) : {store.bombs - store.countBomb}</div>
         <div className={classResult}>{store.gameStatus < 0 ? "PERDU" : ""}{store.gameStatus > 0 ? "VICTOIRE" : ""}</div>
         <div className="row center-xs">
@@ -50,7 +42,6 @@ const Board = () => {
             </tbody>
           </table>
         </div>
-        <button onClick={() => showResult()}>Voir les bombes</button>
       </div>
     );
   }

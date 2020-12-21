@@ -9,18 +9,4 @@
     border:solid 10px red;
     color: red;
   }
-  & button{
-    width:150px;
-    border-radius: 8px;
-    background-color: cadetblue;
-    padding: 10px 20px;
-    margin-bottom:30px;
-    border:solid 1px black;
-  }
-}
-body{
-  padding:16px;
-  @media(min-width: 768px){
-    padding:50px;
-  }
 }

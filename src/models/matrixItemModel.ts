@@ -5,7 +5,6 @@ export type ImatrixItem = {
   x: number,
   y: number,
   mark: boolean,
-  visited: boolean,
-  show:boolean
+  visited: boolean
 };
 

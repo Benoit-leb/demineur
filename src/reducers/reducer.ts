@@ -10,7 +10,8 @@ export const initialState: Igame = {
   gameReady:false,
   matrix: [],
   countBomb: 0,
-  showResult: 0
+  showResult: 0,
+  show:false
 };
 
 export const gameReducer = (
@@ -68,6 +69,11 @@ export const gameReducer = (
         ...state,
         countBomb: state.countBomb - 1
       };
+    case "DISPLAY_BOMB":
+      return {
+        ...state,
+        show:!state.show
+      };
     case "INIT_GAME":
       return {
         ...state,
@@ -76,6 +82,8 @@ export const gameReducer = (
         gameReady: false,
         gameStatus: 0
       };
+    case "RESET_GAME":
+      return initialState;
     default:
       return state;
   }

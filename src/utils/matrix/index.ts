@@ -51,8 +51,7 @@ const CreateMatrix= (size:number, bombs:number) => {
         x,
         y,
         mark,
-        visited,
-        show: false
+        visited
       });
     }
     return await setMinesIntoMatrix();

@@ -11,9 +11,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body{
+  padding:16px;
+  @media(min-width: 768px){
+    padding:50px;
+  }
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+[class*="col-sm"], [class*="col-xs"], [class*="col-md"]{
+  padding-right: 0;
+  padding-left: 0;
+}
+.row{
+  margin-right:0;
+  margin-left:0;
 }
 
 table{
@@ -27,4 +43,21 @@ input:focus, button:focus, button{
   appearance: none;
   outline: 0;
   cursor: pointer;
+}
+
+button{
+  border-radius: 8px;
+  background-color: cadetblue;
+  padding: 10px 20px;
+  margin:20px 0;
+  border:solid 1px black;
+}
+
+.line{
+  max-width: 500px;
+  margin: auto;
+}
+
+*{
+  box-sizing: border-box;
 }
