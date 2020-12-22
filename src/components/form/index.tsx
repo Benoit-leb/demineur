@@ -5,37 +5,37 @@ import { CreateMatrix } from "../../utils/matrix";
 const Form = () => {
   const { store, dispatch } = useContext(Context);
 
-  const setMatrix = useCallback(async() => {
+  const setMatrix = async() => {
     const matrix = await CreateMatrix(store.size, store.bombs);
     dispatch({ type: "SET_MATRIX", data: matrix });
-  }, [dispatch, store.bombs, store.size]);
+  };
 
-  const launchGame = useCallback((e: SyntheticEvent) => {
+  const launchGame = (e: SyntheticEvent) => {
     e.preventDefault();
     dispatch({ type: "INIT_GAME" });
     setMatrix();
-  }, [setMatrix, dispatch]);
+  };
 
 
   useEffect(() => {
     setMatrix();
   }, []);
 
-  const renderColomnValue = () => {
+  const renderColomnValue = useCallback(() => {
     let listOption = [];
     for (let index = 0; index <= 50; index++) {
       listOption.push(<option key={index} value={index}>{index}</option>)
     }
     return listOption;
-  };
+  }, []);
 
-  const renderBombsValue = () => {
+  const renderBombsValue = useCallback(() => {
     let listOption = [];
     for (let index = 0; index < Math.pow(store.size, 2); index++) {
       listOption.push(<option key={index} value={index}>{index}</option>)
     }
     return listOption;
-  };
+  }, [store.size]);
 
   return(
     <React.Fragment>

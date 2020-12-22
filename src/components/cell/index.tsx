@@ -1,4 +1,4 @@
-import React, { FC, useContext, useCallback, SyntheticEvent} from "react";
+import React, { FC, useContext, SyntheticEvent} from "react";
 import {Icell} from "../../models/cellModel";
 import { ImatrixItem} from "../../models/matrixItemModel";
 import { Context } from "../../reducers/reducer";
@@ -6,15 +6,15 @@ import { Context } from "../../reducers/reducer";
 const Cell: FC<Icell> =({item}) => {
   const { store, dispatch } = useContext(Context);
 
-  const checkWin = useCallback(() => {
+  const checkWin = () => {
     const win = store.matrix.filter((el) => !el.visited);
     if (!win.length) {
       dispatch({ type: "WIN_GAME" })
       return;
     }
-  }, [dispatch, store.matrix]);
+  };
 
-  const checkneighbor = useCallback((item: ImatrixItem) => {
+  const checkneighbor = (item: ImatrixItem) => {
     let element;
     if (item.status > 0) {
       item.visited = true;
@@ -33,9 +33,9 @@ const Cell: FC<Icell> =({item}) => {
         }
       }
     }
-  }, [dispatch, store.matrix]);
+  };
 
-  const openCell = useCallback((item: ImatrixItem) => {
+  const openCell = (item: ImatrixItem) => {
     // game not start or cell open
     if (!store.gameReady || item.visited) {
       return;
@@ -50,9 +50,9 @@ const Cell: FC<Icell> =({item}) => {
     checkneighbor(item);
     checkWin();
     
-  }, [checkneighbor, dispatch, store.gameReady, checkWin]);
+  };
 
-  const markCell = useCallback((e: SyntheticEvent, item: ImatrixItem) => {
+  const markCell = (e: SyntheticEvent, item: ImatrixItem) => {
     // game not start or already open without mark
     if (!store.gameReady || (item.visited && !item.mark)) {
       return false ;
@@ -65,7 +65,7 @@ const Cell: FC<Icell> =({item}) => {
     dispatch({ type: "UPDATE_ITEM", data: item})
     checkWin()
     return false;
-  }, [dispatch, store.gameReady, checkWin,]);
+  };
 
   return(
     <td
