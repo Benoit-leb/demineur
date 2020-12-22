@@ -21,6 +21,22 @@ const Form = () => {
     setMatrix();
   }, []);
 
+  const renderColomnValue = () => {
+    let listOption = [];
+    for (let index = 0; index <= 50; index++) {
+      listOption.push(<option key={index} value={index}>{index}</option>)
+    }
+    return listOption;
+  };
+
+  const renderBombsValue = () => {
+    let listOption = [];
+    for (let index = 0; index < Math.pow(store.size, 2); index++) {
+      listOption.push(<option key={index} value={index}>{index}</option>)
+    }
+    return listOption;
+  };
+
   return(
     <React.Fragment>
 
@@ -32,7 +48,9 @@ const Form = () => {
               <label>
                 Nombre de colonnes :
               </label>
-              <input onChange={(e) => dispatch({ type: "SET_SIZE", data: parseInt(e.target.value) })} min={0} max={50} value={store.size} type="number" />
+              <select value={store.size} onChange={(e) => dispatch({ type: "SET_SIZE", data: parseInt(e.target.value) })}>
+                {renderColomnValue()}
+              </select>
             </div>
           </div>
           <div className="input-container">
@@ -40,7 +58,9 @@ const Form = () => {
               <label>
                 Nombre de bombes :
               </label>
-              <input onChange={(e) => dispatch({ type: "SET_BOMBS", data: parseInt(e.target.value) })} min={0} max={Math.pow(store.size, 2)} value={store.bombs} type="number" />
+              <select value={store.bombs} onChange={(e) => dispatch({ type: "SET_BOMBS", data: parseInt(e.target.value) })}>
+                {renderBombsValue()}
+              </select>
             </div>
           </div>
         </div>
